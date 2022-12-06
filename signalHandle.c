@@ -7,13 +7,16 @@ void signalHandle(int sig)
 	
 	if(getpgid(cpid) == getpgid(ppid)) //If PPID = PID, don't kill process
 	{
-		write(1,"error\n",7);
+		fflush(stdin);
+		printf("\nError: No subprocesses running\n");
+		printf("%s> ", prompt);
 		return;
 	}
 	else
 	{
 		kill(cpid, SIGINT); //Kill Child PID
 		tcsetpgrp(0,ppid); // Set parent PID to foreground
+		printf("\nSubrprocess terminated\n");
 		kill(ppid, SIGCONT); // Continue Parent
 	}
 }
