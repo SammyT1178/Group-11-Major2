@@ -21,15 +21,28 @@ void comRedirect(char *args[], char *first, int arg_count, char *line)
     cmd[arg_count] = '\0';
 
     pid = fork();
-		if(pid == 0) {
+		if(pid == 0) 
+		{	
+			cpid = pid;
+			
+			setpgid(cpid, cpid);
+			
 			execvp(*cmd, cmd);
-			fprintf(stderr,"%s: command not found\n", *cmd);
-			MyExit();//Ensures child exits after executing command
+			fprintf(stderr,"%s: command not found\n", *cmd);	
+			while(1)
+			{
+				printf("Infinite loop\n");
+				sleep(1);
+			}
 		}
-    /*else if (pid < 0)
-    {
-     fprintf(stderr, "Fork error\n"); 
-    }*/
-    else wait(&status);
+		else 
+		{
+			tcsetpgrp(0,cpid);
+			cpid = tcgetpgrp(0);
+			wait(&status);
+			tcsetpgrp(0,ppid);
+		}
   }
+}
+
 }
