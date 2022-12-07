@@ -2,16 +2,18 @@
 
 int parseArg(char *line, char *args[])
 {
-  int count = 0;
+  	int count = 0;
   
-  char *token = strtok(line, " ");
-  token = strtok(NULL, " ");
+  	// Break command into tokens if seperated by " "
+  	char *token = strtok(line, " ");
+  	token = strtok(NULL, " ");
   
-  while(token != NULL)
-  {
-    args[count] = strdup(token);
-    count++;
-    token = strtok(NULL, " ");
-  }
-  return count + 1;
+  	while(token != NULL)
+  	{
+    		// Add to args array
+    		args[count] = strdup(token);
+   		 count++;
+    		token = strtok(NULL, " ");
+  	}
+  	return count + 1;
 }
