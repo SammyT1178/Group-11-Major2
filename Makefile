@@ -1,8 +1,8 @@
-CFLAGS = -Wno-unused-result -O
+CFLAGS = -Wno-unused-result -g
 CC = gcc
 
-list: driver.o BatchMode.o CD.o InteractiveMode.o MyExit.o comRedirect.o exeCom.o parseArg.o parseCom.o signalHandle.o
-	$(CC) $(CFLAGS) -o major2 driver.o BatchMode.o CD.o InteractiveMode.o MyExit.o comRedirect.o exeCom.o parseArg.o parseCom.o signalHandle.o -lm
+list: driver.o BatchMode.o CD.o InteractiveMode.o MyExit.o comRedirect.o comPiped.o exeCom.o parseArg.o parseCom.o signalHandle.o
+	$(CC) $(CFLAGS) -o major2 driver.o BatchMode.o CD.o InteractiveMode.o MyExit.o comRedirect.o comPiped.o exeCom.o parseArg.o parseCom.o signalHandle.o -lm
 
 driver.o: driver.c major2.h
 	$(CC) $(CFLAGS) -c driver.c
@@ -21,6 +21,9 @@ MyExit.o: MyExit.c major2.h
   
 comRedirect.o: comRedirect.c major2.h
 	$(CC) $(CFLAGS) -c comRedirect.c
+
+comPiped.o: comPiped.c major2.h
+	$(CC) $(CFLAGS) -c comPiped.c
   
 exeCom.o: exeCom.c major2.h
 	$(CC) $(CFLAGS) -c exeCom.c
