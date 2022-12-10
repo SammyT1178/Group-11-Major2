@@ -1,5 +1,10 @@
 # Group-11-Major2
 
+#### How to run ####
+
+To run on the Cell servers, compile everything in the same directory using the `make` command.
+Run the code using the `./major2` line. 
+
 ## Group Portion ## 
 
 ### driver.c ###
