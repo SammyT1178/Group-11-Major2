@@ -23,6 +23,8 @@ int parseCom(char *userIn);
 int parseArg(char *line, char *args[]);
 void exeCom(char *com, char *line);
 void comRedirect(char *args[], char *first_command, int arg_count, char *full_line);
+void comPiped(char* args[], char *first, int arg_count);
+void formatIfExit(char* commands[], int count);
 
 // Built-In Commands
 void CD(char *input, int arg_num);
