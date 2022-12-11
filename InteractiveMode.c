@@ -24,24 +24,29 @@ void InteractiveMode()
     {
       continue;
     }
+	  
+    if(strlen(str) != MAX)
+    {
       
     
-    if (str[strlen(str)-1] == '\n') 
-    {
-      str[strlen(str)-1] = '\0';    
+	    if (str[strlen(str)-1] == '\n') 
+	    {
+	      str[strlen(str)-1] = '\0';    
+	    }
+
+	    int numCmd = parseCom(str);
+
+	    formatIfExit(command, numCmd);
+
+	    for(int i=0; i < numCmd; i++){
+				char *temp = strdup(command[i]);
+				temp = strtok(temp, " ");
+				exeCom(temp, command[i]);
+				//free temp
+				free(temp);
+			}
     }
-    
-    int numCmd = parseCom(str);
-    
-    formatIfExit(command, numCmd);
-    
-    for(int i=0; i < numCmd; i++){
-			char *temp = strdup(command[i]);
-			temp = strtok(temp, " ");
-			exeCom(temp, command[i]);
-			//free temp
-			free(temp);
-		}
+	  else printf("Error: input too long");
     
     free(str);
     
