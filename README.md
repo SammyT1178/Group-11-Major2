@@ -14,6 +14,20 @@ Run the code using the `./major2` line.
 ### InteractiveMode.c ###
 
 ### comRedirect.c ###
+//Prajwal Katwal
+
+- checks if the line has both pipelining and redirection, then prints error.
+- pipelining and redirection calls are added
+- Check if we should redirect stdout and redirect stdin
+- Ensures child exits after executing command
+
+### comPiped.c ###
+//Prajwal Katwal
+- It tterates over args count
+- goes for fork process
+- then checks if process is not last, if so redirect stdout 
+- then it iterates over commands and wait for them to finish
+- At the end of the fiel it closes pipe.
 
 ### exeCom.c ###
 
